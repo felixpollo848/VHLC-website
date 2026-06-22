@@ -38,7 +38,7 @@ service cloud.firestore {
     // Only admin can create or modify user role documents.
     // Users can read their own document (for role lookup on login).
     match /users/{uid} {
-      allow read:   if isOwner(uid) || isAdmin();
+      allow read:   if isAuthenticated();
       allow create: if isAdmin();
       allow update: if isAdmin();
       allow delete: if isAdmin();
@@ -49,7 +49,7 @@ service cloud.firestore {
     // Teachers can read all student profiles in their class.
     // Only admin can create, update, or delete student records.
     match /students/{studentId} {
-      allow read:   if isOwner(studentId) || isAdminOrTeacher();
+      allow read:   if isAuthenticated();
       allow create: if isAdmin();
       allow update: if isAdmin();
       allow delete: if isAdmin();
