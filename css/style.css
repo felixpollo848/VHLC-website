@@ -89,14 +89,7 @@ img { max-width: 100%; height: auto; }
 .vhlc-navbar .navbar-brand .brand-logo {
   width: 42px;
   height: 42px;
-  background: var(--accent);
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 1.15rem;
-  color: var(--primary-dark);
   flex-shrink: 0;
 }
 
@@ -791,15 +784,9 @@ img { max-width: 100%; height: auto; }
 .login-logo {
   width: 64px;
   height: 64px;
-  background: var(--primary-dark);
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--accent);
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 1.5rem;
+  display: block;
 }
 
 .login-title {
