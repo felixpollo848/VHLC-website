@@ -30,12 +30,21 @@ async function getUserRole(uid) {
 // ── Redirect by Role ────────────────────────────────────────
 function redirectByRole(role) {
   const root = getRootPath();
+  const cleanRole = (role || '').toString().toLowerCase().trim();
   const map = {
     admin:   root + 'admin/dashboard.html',
     teacher: root + 'teacher/dashboard.html',
     student: root + 'student/dashboard.html',
   };
-  window.location.href = map[role] || root + 'login.html';
+  
+  if (map[cleanRole]) {
+    window.location.replace(map[cleanRole]);
+  } else {
+    console.error('Invalid user role:', role);
+    auth.signOut().then(() => {
+      window.location.replace(root + 'login.html?error=invalid_role');
+    });
+  }
 }
 
 // ── Guard: Require Authentication ───────────────────────────
