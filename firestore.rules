@@ -12,15 +12,18 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isAuthenticated() && getUserData().role == 'admin' && getUserData().isActive == true;
+      let data = getUserData();
+      return isAuthenticated() && data.role == 'admin' && data.isActive != false;
     }
 
     function isTeacher() {
-      return isAuthenticated() && getUserData().role == 'teacher' && getUserData().isActive == true;
+      let data = getUserData();
+      return isAuthenticated() && data.role == 'teacher' && data.isActive != false;
     }
 
     function isStudent() {
-      return isAuthenticated() && getUserData().role == 'student' && getUserData().isActive == true;
+      let data = getUserData();
+      return isAuthenticated() && data.role == 'student' && data.isActive != false;
     }
 
     function isAdminOrTeacher() {
